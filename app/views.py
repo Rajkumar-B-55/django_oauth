@@ -73,6 +73,7 @@ def logout(request):
     try:
         if request:
             request.session.clear()
+            request.session.pop('linkedin_token', None)
             auth.logout(request)
         return redirect(home)
     except Exception as e:
